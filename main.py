@@ -23,14 +23,15 @@ all_links = parsed_html.find_all("a")
 # list of download links of notices
 download_links = []
 
+website_url = ""
+# e.g. website_url = "http://admission.kuet.ac.bd/"
+
 for link in all_links:
     if ".pdf" in link["href"]:
-        if "website-url" in link["href"]:
-        # e.g. if "http://admission.kuet.ac.bd/" in link["href"]:
+        if website_url in link["href"]:
             download_links.append(link["href"])
         else:
-            download_links.append("website-url" + link["href"])
-            # e.g. download_links.append("http://admission.kuet.ac.bd/" + link["href"])
+            download_links.append(website_url + link["href"])
         
 
 # downloader
